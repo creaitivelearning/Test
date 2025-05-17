@@ -4,6 +4,12 @@ import random
 from dataclasses import dataclass
 from typing import Dict
 
+
+def _bar(value: int, max_value: int, length: int = 20, char: str = "#") -> str:
+    """Return a simple ASCII bar for visualization."""
+    filled = char * int(max(0, min(value, max_value)) / max_value * length)
+    return filled.ljust(length, "-")
+
 @dataclass
 class Player:
     """Represents one side in the simulation."""
@@ -79,6 +85,7 @@ class Game:
             p.gather_gold(g)
         self.resolve_combat(attackers)
         self.print_tick(attackers, actions)
+        self.print_visuals()
 
     def resolve_combat(self, attackers) -> None:
         p1, p2 = self.players
@@ -102,6 +109,18 @@ class Game:
                 f"(recruited {a['recruit']}, {farm_txt})"
             )
         print(f"  Attacks: A->{attackers[0]} men, B->{attackers[1]} men")
+        print()
+
+    def print_visuals(self) -> None:
+        """Display simple ASCII bars for fort HP and unit counts."""
+        p1, p2 = self.players
+        print("   Fort HP")
+        print(f"   A [{_bar(p1.fort_hp, 20)}] {p1.fort_hp}/20")
+        print(f"   B [{_bar(p2.fort_hp, 20)}] {p2.fort_hp}/20")
+        print("   Units")
+        max_units = 10
+        print(f"   A [{_bar(p1.units, max_units)}] {p1.units}/{max_units}")
+        print(f"   B [{_bar(p2.units, max_units)}] {p2.units}/{max_units}")
         print()
 
     def print_winner(self) -> None:
