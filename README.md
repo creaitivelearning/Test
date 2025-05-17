@@ -6,7 +6,7 @@ Key features:
 
 - Configurable farm and unit costs
 - Optional random seed for reproducible games
-- More detailed tick-by-tick output
+- More detailed tick-by-tick output with ASCII bars showing fort health and unit counts
 
 To run the simulation:
 
