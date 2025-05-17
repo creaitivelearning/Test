@@ -1,11 +1,23 @@
 # AI Faction Simulation
 
-This repository contains a simple Python simulation where two AI-controlled factions compete in real time. Each faction starts with a fort and three men. Men can gather gold, build farms, recruit additional men, and attack the opposing fort.
+This repository contains small Python simulations where AI-controlled factions compete.
 
-To run the simulation:
+## Basic Simulation
+The original example is in `simulation.py`. Two factions gather gold, build farms, recruit units and attack each other's fort.
+
+Run it with:
 
 ```bash
 python3 simulation.py
 ```
 
-The game proceeds in ticks until one fort is destroyed or a side runs out of units. The output shows each tick's state and announces the winner.
+## Expanded RTS-Lite
+The file `rts_lite.py` introduces buildings, unit roles, and a slightly smarter AI. Players can build mines, houses, and barracks, train fighter or scavenger units, and attack when they gain an advantage.
+
+Run it with:
+
+```bash
+python3 rts_lite.py
+```
+
+Both simulations print tick-by-tick logs until one fort falls or the tick limit is reached.
